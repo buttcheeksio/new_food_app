@@ -3,11 +3,11 @@
     <% ingredients.each do |ingredient| %>
       <h3>
         <%= link_to ingredient.name, ingredient %>
-        <%= link_to "Edit", "/ingredients/#{ingredient.id}/edit", class: "btn btn-small" %>
-        <%= link_to "Delete", "/ingredients/#{ingredient.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-small" %>
+        <%= link_to "Edit", "/ingredients/#{ingredient.id}/edit", class: "btn btn-default btn-xs" %>
+        <%= link_to "Delete", "/ingredients/#{ingredient.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs" %>
       </h3>
     <% end %>
   </div>
 <% end %>
 
-<%= link_to "New", new_ingredient_path, class: "btn btn-default"  %>
+<%= link_to "New Ingredient", new_ingredient_path, class: "btn btn-primary"  %>

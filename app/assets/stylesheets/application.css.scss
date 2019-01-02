@@ -16,3 +16,27 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  margin-left: 2em;
+}
+
+nav {
+  margin-left: -2em;
+}
+
+.navbar {
+  border-top-left-radius: 0em;
+  border-top-right-radius: 0em;
+}
+
+ol {
+    list-style-type: none;
+    counter-reset: elementcounter;
+    padding-left: 0;
+}
+
+li:before { 
+    content: "Step " counter(elementcounter) ". ";
+    counter-increment:elementcounter;
+}

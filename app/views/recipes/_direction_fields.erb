@@ -1,9 +1,8 @@
 <div class="nested-fields">
-  <div class="field">
-    <%= f.label :step %><br>
-    <%= f.text_area :step, input_html: { class: "form-input form-control" } %>
+  <div class="form-group">
+    <li>
+      <%= f.text_area :step, class: "form-control" %>
+      <%= link_to_remove_association "remove", f %>
+    </li>
   </div>
-
-    <%= link_to_remove_association "remove step", f %>
-
 </div>

@@ -1,9 +1,6 @@
 <div class="nested-fields">
   <div class="field">
-    <%= f.label :name %><br>
-    <%= collection_select(:recipe_ingredients, :id, @ingredients, :id, :name) %><br>
+    <%= collection_select(:recipe_ingredients, :id, @ingredients, :id, :name) %>
+    <%= link_to_remove_association "remove", f %>
   </div>
-
-  <%= link_to_remove_association "remove ingredient", f %>
-
 </div>
