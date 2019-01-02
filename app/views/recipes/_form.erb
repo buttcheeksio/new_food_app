@@ -16,6 +16,19 @@
     <%= f.text_area :description %>
   </div>
 
+  <div class="ingredients">
+    <h2>Ingredients</h2>
+
+    <%= f.fields_for :recipe_ingredients do |ri| %>
+      <%= render 'recipe_ingredient_fields', f: ri %>
+
+      <div class="links">
+        <%= link_to_add_association 'add ingredient', f, :recipe_ingredients %>
+      </div>
+
+    <% end %>
+  </div>
+
   <div id="directions">
     <h2>Directions</h2>
 
@@ -25,9 +38,8 @@
       <div class="links">
         <%= link_to_add_association 'add step', f, :directions %>
       </div>
+
     <% end %>
-
-
   </div>
 
   <%= f.submit %>

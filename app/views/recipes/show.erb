@@ -1,6 +1,21 @@
-<h2><%= @recipe.title %></h2>
+<h1><%= @recipe.title %></h1>
 <p><%= @recipe.description %></p>
 
+<h2>Ingredients</h2>
+<ol>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <%= ingredient.name %>
+  <% end %>
+</ol>
+
+<h2>Directions</h2>
+<ol>
+  <% @recipe.directions.each do |direction| %>
+    <li><%= direction.step %></li>
+  <% end %>
+</ol>
+
 <%= link_to "Back", root_path, class: "btn btn-default" %>
+<%= link_to "New", new_recipe_path, class: "btn btn-default" %>
 <%= link_to "Edit", edit_recipe_path, class: "btn btn-default"  %>
 <%= link_to "Delete", recipe_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
