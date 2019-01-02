@@ -10,13 +10,14 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe_ingredient = @recipe.recipe_ingredients.build
     @ingredients = Ingredient.all
+
+    @recipe_ingredient = @recipe.recipe_ingredients.build
     @recipe.directions.build
   end
 
   def create
-    @recipe = Recipe.create(recipe_params)
+    @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
       redirect_to @recipe, notice: "Successfully created recipe"
