@@ -1,0 +1,8 @@
+<% @recipes.each_slice(3) do |recipes| %>
+  <div class="row">
+    <% recipes.each do |recipe| %>
+      <h2><%= link_to recipe.title, recipe %></h2>
+    <% end %>
+  </div>
+
+<% end %>

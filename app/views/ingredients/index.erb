@@ -1,0 +1,10 @@
+<% @ingredients.each_slice(3) do |ingredients| %>
+  <div class="row">
+    <% ingredients.each do |ingredient| %>
+      <h2><%= link_to ingredient.name, ingredient %></h2>
+      <h2><%= ingredient.ingredient_type %></h2>
+    <% end %>
+  </div>
+<% end %>
+
+<%= link_to "New", new_ingredient_path, class: "btn btn-default"  %>
