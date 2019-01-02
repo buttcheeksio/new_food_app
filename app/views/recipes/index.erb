@@ -2,15 +2,13 @@
 
   <div class="row">
     <% recipes.each do |recipe| %>
-
-      <h3><%= link_to recipe.title, recipe %>
-      <%= link_to "Edit", "/recipes/#{recipe.id}/edit", class: "btn btn-small" %>
-
-      <%= link_to "Delete", "/recipes/#{recipe.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-small" %></h3>
-
+      <h3>
+        <%= link_to recipe.title, recipe %>
+        <%= link_to "Edit", "/recipes/#{recipe.id}/edit", class: "btn btn-small" %>
+        <%= link_to "Delete", "/recipes/#{recipe.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-small" %>
+      </h3>
     <% end %>
   </div>
-
 <% end %>
 
 <%= link_to "New Recipe", new_recipe_path, class: "btn btn-default" %>

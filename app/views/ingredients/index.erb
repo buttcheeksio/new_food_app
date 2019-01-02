@@ -1,11 +1,11 @@
 <% @ingredients.each_slice(3) do |ingredients| %>
   <div class="row">
     <% ingredients.each do |ingredient| %>
-      <h2>
+      <h3>
         <%= link_to ingredient.name, ingredient %>
         <%= link_to "Edit", "/ingredients/#{ingredient.id}/edit", class: "btn btn-small" %>
         <%= link_to "Delete", "/ingredients/#{ingredient.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-small" %>
-      </h2>
+      </h3>
     <% end %>
   </div>
 <% end %>
