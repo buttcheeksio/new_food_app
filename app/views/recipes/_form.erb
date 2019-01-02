@@ -1,41 +1,35 @@
-<%= simple_form_for @recipe, html: { multipart: true } do |f| %>
+<%= form_for @recipe, html: { multipart: true } do |f| %>
 
-
-  <%# This provides error messages %>
-  <% if @recipe.errors.any? %>
-    <p>
-      <%= @recipe.errors.count %>
-      Prevented this recipe from saving
-    </p>
-    <ul>
-      <% @recipe.errors.full_message.each do |msg| %>
-        <li> <%= msg %>
-      <% end %>
-  <% end %>
 
   <div class="panel-body">
 
     <%# input_html: { class: 'form-control' } extends boxes to edge of screen %>
-    <%= f.input :title, input_html: { class: 'form-control' } %>
-    <%= f.input :description, input_html: { class: 'form-control' } %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
 
-    <div class="row col-md-6">
-      <h3>Ingredients</h3>
-      <div id="ingredients">
-
-        <%= f.simple_fields_for :ingredients do |ingredient| %>
-          <div class="">
-            ok
-          </div>
-          <%= render 'ingredient_fields', f: ingredient %>
-            <div id="links">
-              <%= link_to_add_association "Add Ingredient", f, :ingredients, class: "btn btn-default add-button" %>
-            </div>
-        <% end %>
-
+    <%= fields_for(@recipe_ingredient) do |ri| %>
+      <%= ri.label "All Ingredients" %>
+      <div id="additional-ingredient">
+      <%= collection_select(:recipe_ingredients, :id, @ingredients, :id, :name) %><br>
       </div>
-    </div>
-  </div>
+      <%= ri.button "Add Ingredient", id: 'add-ingredient', type: 'button' %>
+
+      <script>
+        // document.addEventListener(DOMContentloaded)
+        // create getElement
+
+        // give element attributes
+        document.getElementById('add-ingredient').addEventListener("click", function() {
+          let input = document.createElement('input')
+          input.setAttribute('type', 'text')
+          document.getElementById('additional-ingredient').appendChild(input)
+          console.log(event.target)
+        })
+      </script>
+
+    <% end %>
 
   <%= f.button :submit, class: "btn btn-primary" %>
 
