@@ -34,6 +34,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @ingredients = Ingredient.all
   end
 
   def update
