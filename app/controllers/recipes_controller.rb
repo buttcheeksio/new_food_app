@@ -12,6 +12,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     @recipe_ingredient = @recipe.recipe_ingredients.build
     @ingredients = Ingredient.all
+    @recipe.directions.build
   end
 
   def create
@@ -47,6 +48,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description, recipe_ingredients_attributes: [:id, :_destroy], directions_attributes: [:id, :step, :_destroy])
+    params.require(:recipe).permit(:title, :description, directions_attributes: [:id, :step, :_destroy])
   end
 end
