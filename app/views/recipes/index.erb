@@ -11,4 +11,7 @@
   </div>
 <% end %>
 
-<%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary" %>
+
+<% if user_signed_in? %>
+  <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary" %>
+<% end  %>

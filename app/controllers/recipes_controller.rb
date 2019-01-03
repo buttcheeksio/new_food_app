@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :find_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @recipes = Recipe.all.order("created_at DESC")
@@ -9,7 +10,7 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+    @recipe = current_user.recipes.build
     @ingredients = Ingredient.all
 
     @recipe.recipe_ingredients.build
@@ -17,20 +18,17 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = current_user.recipes.build(recipe_params)
 
     if @recipe.save
-      byebug
-      params[:recipe_ingredients].each do |recipe_ingredient|
-        RecipeIngredient.create(recipe_id:@recipe.id, ingredient_id:params[:recipe_ingredients][:id])
+      params[:recipe][:recipe_ingredients_attributes].each do |recipe_ingredient_attribute|
+          RecipeIngredient.create(recipe_id:@recipe.id, ingredient_id:recipe_ingredient_attribute[1][:ingredient_id])
       end
 
       redirect_to @recipe, notice: "Successfully created recipe"
     else
       render 'new'
     end
-
-
   end
 
   def edit

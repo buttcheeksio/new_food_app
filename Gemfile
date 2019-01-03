@@ -20,6 +20,7 @@ gem 'simple_form', '~> 4.1'
 gem 'bootstrap-sass', '~> 3.4'
 gem 'cocoon', '~> 1.2', '>= 1.2.12'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'devise', '~> 4.2'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
