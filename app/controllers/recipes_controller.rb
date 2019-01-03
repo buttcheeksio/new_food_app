@@ -18,6 +18,7 @@ class RecipesController < ApplicationController
   end
 
   def create
+    @ingredients = Ingredient.all
     @recipe = current_user.recipes.build(recipe_params)
 
     if @recipe.save

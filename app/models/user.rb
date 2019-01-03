@@ -10,4 +10,18 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :user_ingredients, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
-end
+
+  def beef_function
+
+    ui = self.ingredients
+    @available_recipes = []
+
+    Recipe.all.each do |recipe|
+      if !(ui & recipe.ingredients).empty?
+        @available_recipes << recipe
+      end
+    end
+    @available_recipes
+  end
+
+end #end of User class

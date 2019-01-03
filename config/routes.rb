@@ -4,12 +4,7 @@ Rails.application.routes.draw do
   resources :recipes
   resources :ingredients
 
-  # get 'users/:id/cupboard', to: 'users#cupboard'
-  # post 'users/:id/cupboard', to: 'users#cupboard'
-  # patch 'users/:id/cupboard', to: 'users#update'
-
-  # get 'users/:id/cupboard', to: 'user_ingredients#cupboard', as: 'cupboard'
-  # get 'users/:id/cupboard/edit', to: 'user_ingredients#edit', as: 'cupboard_edit'
+  get '/users/:id/recipe-search', to: 'users#search'
 
   root "recipes#index"
 end
