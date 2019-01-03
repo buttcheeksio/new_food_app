@@ -37,9 +37,6 @@ class RecipesController < ApplicationController
 
   def update
     if @recipe.update(recipe_params)
-      params[:recipe][:recipe_ingredients_attributes].each do |recipe_ingredient_attribute|
-          RecipeIngredient.update(recipe_id:@recipe.id, ingredient_id:recipe_ingredient_attribute[1][:ingredient_id], amount:recipe_ingredient_attribute[1][:amount])
-      end
       redirect_to @recipe
     else
       render 'edit'
@@ -58,6 +55,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description, directions_attributes: [:id, :step, :_destroy], recipe_ingredients_attributes: [:id, :user_id, :recipe_id, :_destroy], ingredients_attributes: [:id, :name, :_destroy])
+    params.require(:recipe).permit(:title, :description, directions_attributes: [:id, :step, :_destroy], recipe_ingredients_attributes: [:id, :user_id, :recipe_id, :ingredient_id, :amount, :_destroy], ingredients_attributes: [:id, :name, :_destroy])
   end
 end
