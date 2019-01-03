@@ -1,0 +1,17 @@
+<%= form_for @user do |f| %>
+
+  <div class="ingredients">
+    <h2>Ingredients</h2>
+
+    <%= f.label :name %>
+    <%= f.fields_for :user_ingredients do |ui| %>
+
+    <%= render 'user_ingredient_fields', f: ui %>
+
+    <div class="links">
+      <%= link_to_add_association 'add ingredient', f, :user_ingredients %>
+    </div>
+  <% end %>
+  </div>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

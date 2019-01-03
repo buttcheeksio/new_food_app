@@ -21,9 +21,9 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.build(recipe_params)
 
     if @recipe.save
-      params[:recipe][:recipe_ingredients_attributes].each do |recipe_ingredient_attribute|
-          RecipeIngredient.create(recipe_id:@recipe.id, ingredient_id:recipe_ingredient_attribute[1][:ingredient_id], amount:recipe_ingredient_attribute[1][:amount])
-      end
+      # params[:recipe][:recipe_ingredients_attributes].each do |recipe_ingredient_attribute|
+      #     RecipeIngredient.create(recipe_id:@recipe.id, ingredient_id:recipe_ingredient_attribute[1][:ingredient_id], amount:recipe_ingredient_attribute[1][:amount])
+      # end
 
       redirect_to @recipe, notice: "Successfully created recipe"
     else

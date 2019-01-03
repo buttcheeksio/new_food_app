@@ -1,0 +1,10 @@
+<h1>My Cupboard</h1>
+
+<ol>
+  <% @user.ingredients.each do |ingredient| %>
+    <%= ingredient.name %><br>
+
+  <% end %>
+</ol>
+
+<%= link_to "Edit My Cupboard", "/users/#{@user.id}/edit", class: "btn btn-default btn-xs" %>

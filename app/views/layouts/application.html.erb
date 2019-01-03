@@ -23,7 +23,7 @@
 
         <% if user_signed_in? %>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/cupboard"> My Cupboard </a></li>
+            <li><a href= "/" > My Cupboard </a></li>
             <li><a href="/recipe-search"> Search </a></li>
             <li><a href="/account"><span class="glyphicon glyphicon-user"></span> My Account </a></li>
             <li><%= link_to('Logout', destroy_user_session_path, class: "glyphicon glyphicon-log-out", method: :delete) %></li>
