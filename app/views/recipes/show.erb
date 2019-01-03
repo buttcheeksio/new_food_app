@@ -5,7 +5,11 @@
 <h2>Ingredients</h2>
 <ol>
   <% @recipe.ingredients.each do |ingredient| %>
-    <%= ingredient.name %><br>
+    <% @recipe.recipe_ingredients.map do |recipe_ingredient| %>
+      <% if recipe_ingredient.ingredient_id == ingredient.id %>
+        <%= "#{ingredient.name}, #{recipe_ingredient.amount}" %><br>
+      <% end %>
+    <% end %>
   <% end %>
 </ol>
 
@@ -15,7 +19,6 @@
     <li><%= direction.step %></li>
   <% end %>
 </ol>
-
 
 <% if user_signed_in? %>
   <%= link_to "Back", root_path, class: "btn btn-default" %>

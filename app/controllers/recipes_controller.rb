@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
 
     if @recipe.save
       params[:recipe][:recipe_ingredients_attributes].each do |recipe_ingredient_attribute|
-          RecipeIngredient.create(recipe_id:@recipe.id, ingredient_id:recipe_ingredient_attribute[1][:ingredient_id])
+          RecipeIngredient.create(recipe_id:@recipe.id, ingredient_id:recipe_ingredient_attribute[1][:ingredient_id], amount:recipe_ingredient_attribute[1][:amount])
       end
 
       redirect_to @recipe, notice: "Successfully created recipe"
@@ -37,6 +37,9 @@ class RecipesController < ApplicationController
 
   def update
     if @recipe.update(recipe_params)
+      params[:recipe][:recipe_ingredients_attributes].each do |recipe_ingredient_attribute|
+          RecipeIngredient.update(recipe_id:@recipe.id, ingredient_id:recipe_ingredient_attribute[1][:ingredient_id], amount:recipe_ingredient_attribute[1][:amount])
+      end
       redirect_to @recipe
     else
       render 'edit'
