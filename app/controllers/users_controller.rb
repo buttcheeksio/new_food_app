@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   end
 
   def search
-
     @available_recipes = @user.beef_function
   end
 
