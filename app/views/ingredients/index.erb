@@ -1,15 +1,16 @@
-<% @ingredients.each_slice(3) do |ingredients| %>
-  <div class="row">
-    <% ingredients.each do |ingredient| %>
-      <h3>
-        <%= link_to ingredient.name, ingredient %>
-        <%= link_to "Edit", "/ingredients/#{ingredient.id}/edit", class: "btn btn-default btn-xs" %>
-        <%= link_to "Delete", "/ingredients/#{ingredient.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs" %>
-      </h3>
-    <% end %>
-  </div>
+<% if user_signed_in? %>
+  <%= link_to "Click Here to Make a New Ingredient", new_ingredient_path, class: "btn btn-primary btn-block" %><br>
 <% end %>
 
-<% if user_signed_in? %>
-  <%= link_to "New Ingredient", new_ingredient_path, class: "btn btn-primary"  %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <% @ingredients.each do |ingredient| %>
+      <div class="col-md-4">
+        <div class="ingredient-box">
+          <%= link_to ingredient.name, ingredient %>
+          <%= link_to "Edit", "/ingredient/#{ingredient.id}/edit", class: "btn btn-default btn-xs" %>
+          <%= link_to "Delete", "/ingredients/#{ingredient.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs" %>
+        </div>
+      </div>
+    <% end %>
+</div>
