@@ -1,5 +1,7 @@
 <% if user_signed_in? %>
-  <%= link_to "Click Here to Make a New Ingredient", new_ingredient_path, class: "btn btn-primary btn-block" %><br>
+  <div class="button-container">
+    <%= link_to "Click Here to Make a New Ingredient", new_ingredient_path, class: "btn btn-primary btn-block" %><br>
+  </div>
 <% end %>
 
 <div class="container">
@@ -13,4 +15,5 @@
         </div>
       </div>
     <% end %>
+  </div>
 </div>

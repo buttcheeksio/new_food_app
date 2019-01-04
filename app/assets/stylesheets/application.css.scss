@@ -17,11 +17,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
-
 img.recipe-show {
   width: 400px;
   height: auto;
+}
+
+.button-container {
+  margin-right: 2em;
+}
+
+body {
+  margin-bottom: 50px;
 }
 
 .recipe-box {

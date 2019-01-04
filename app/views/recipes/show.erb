@@ -24,7 +24,7 @@
   <% end %>
 </ol>
 
-<% if user_signed_in? %>
+<% if user_signed_in? && @recipe.user_id == current_user.id %>
   <%= link_to "Back", root_path, class: "btn btn-default" %>
   <%= link_to "New", new_recipe_path, class: "btn btn-default" %>
   <%= link_to "Edit", edit_recipe_path, class: "btn btn-default"  %>
