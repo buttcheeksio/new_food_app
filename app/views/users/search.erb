@@ -1,5 +1,15 @@
-<h2>These are recipes you can cook with the ingredients in your cupboard!</h2>
-<% @available_recipes.each do |recipe| %>
+<% if @available_recipes.any? %>
+  <h2>These are recipes you can cook with the ingredients in your cupboard!</h2>
 
-  <%= link_to recipe.title, recipe %><br>
+  <% @available_recipes.each do |recipe| %>
+    <div class="col-md-4">
+      <div class="recipe-box">
+        <% if recipe.image? %>
+          <%= link_to (image_tag recipe.image.url, class: "recipe-index"), recipe %>
+        <% end %>
+          <h3><%= link_to recipe.title, recipe %></h3>
+          <%= recipe.description %><br>
+      </div>
+    </div>
+  <% end %>
 <% end %>
