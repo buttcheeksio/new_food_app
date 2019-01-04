@@ -10,6 +10,7 @@
       <div class="col-md-4">
         <div class="ingredient-box">
           <%= link_to ingredient.name, ingredient %>
+            <% if current_user && recipe.user_id == current_user.id %>
           <%= link_to "Edit", "/ingredient/#{ingredient.id}/edit", class: "btn btn-default btn-xs" %>
           <%= link_to "Delete", "/ingredients/#{ingredient.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs" %>
         </div>

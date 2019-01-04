@@ -38,9 +38,15 @@ body {
   box-shadow: 10px 10px 5px #888888;
 }
 
+img:hover {
+  transform: scale(1.1);
+  transition: transform .2s; /* Animation */
+}
+
 .ingredient-box {
   height: 2.5em;
 }
+
 img.recipe-index {
   width: 100%;
   height: 70%;
