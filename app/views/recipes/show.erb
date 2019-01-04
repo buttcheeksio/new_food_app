@@ -1,3 +1,7 @@
+<% if @recipe.image? %>
+  <%= image_tag @recipe.image.url, class: "recipe-show" %>
+<% end %>
+
 <h1><%= @recipe.title %></h1>
 <p>Written by <%= @recipe.user.email %></p>
 <p><%= @recipe.description %></p>

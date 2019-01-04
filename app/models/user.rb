@@ -17,7 +17,6 @@ class User < ApplicationRecord
     available_recipes = []
 
     Recipe.all.each do |recipe|
-
       if !(ui & recipe.ingredients).empty? && (ui & recipe.ingredients).length == recipe.ingredients.length
         available_recipes << recipe
       end

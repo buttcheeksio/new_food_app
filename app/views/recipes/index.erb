@@ -3,6 +3,7 @@
   <div class="row">
     <% recipes.each do |recipe| %>
       <h3>
+        <%= image_tag recipe.image.url, class: "recipe-show" if recipe.image? %>
         <%= link_to recipe.title, recipe %>
         <%= link_to "Edit", "/recipes/#{recipe.id}/edit", class: "btn btn-default btn-xs" %>
         <%= link_to "Delete", "/recipes/#{recipe.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs" %>
