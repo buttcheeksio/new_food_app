@@ -14,14 +14,15 @@ class User < ApplicationRecord
   def beef_function
 
     ui = self.ingredients
-    @available_recipes = []
+    available_recipes = []
 
     Recipe.all.each do |recipe|
-      if !(ui & recipe.ingredients).empty?
-        @available_recipes << recipe
+
+      if !(ui & recipe.ingredients).empty? && (ui & recipe.ingredients).length == recipe.ingredients.length
+        available_recipes << recipe
       end
     end
-    @available_recipes
+    available_recipes
   end
 
 end #end of User class
